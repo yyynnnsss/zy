@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+
+</html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1,viewport-fit=cover">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="canonical" href="css/lanzou.html">
+    <title>蓝奏云直链解析工具</title>
+    <meta name="keywords" content="蓝奏云直链,蓝奏云,蓝奏云直链解析,蓝奏云url直链,蓝奏云链接,蓝奏云网盘直链解析">
+    <meta name="description"
+        content="蓝奏云直链解析工具是一款在线帮用户快速提取蓝奏云网盘直链的辅助工具。支持有密码的蓝奏云链接，输入链接直接点击解析即可，非常方便，点击复制可以直接下载，下载速度非常快，操作也很简单。">
+    <!-- 布局css -->
+    <link href="css/zhanid.css" rel="stylesheet" type="text/css">
+    <link href="css/zhanid-response.min.css" rel="stylesheet" type="text/css">
+    <link href="css/css.css" rel="stylesheet" type="text/css">
+    <!-- 樱花特效js -->
+    <script type="text/javascript" src="js/sakuraPlus.js"></script>
+    <!-- 时间计算器j -->
+    <script type="text/javascript" src="js/time.js"></script>
+</head>
+
+</head>
+<!--蓝奏云解析开始-->
+
+<body>
+    <div class="ax-panel ax-padding">
+        <div class="ax-panel-body ax-tools">
+            <div class="title">
+                <h1 class="bl fz18">蓝奏云直链解析</h1>
+                <div class="titler">
+                    <p id="dateTime"></p>
+                </div>
+            </div>
+            <div class="ax-break"></div>
+            <section class="demo-section">
+                <form id="form">
+                    <p>填入蓝奏云分享链接，无密码则留空，点解析即可获取直链。</p>
+                    <div class="ax-row ax-input-group">
+                        <span class="ax-prefix">链接：</span>
+                        <div class="ax-flex-block">
+                            <input type="text" id="url" placeholder="请输入要解析的链接" required>
+                        </div>
+                    </div>
+                    <div class="ax-break"></div>
+                    <div class="ax-row ax-input-group">
+                        <span class="ax-prefix">密码：</span>
+                        <div class="ax-flex-block">
+                            <input type="text" id="pwd" placeholder="请输入密码（无密码则留空）">
+                        </div>
+                    </div>
+                    <div class="tcenter p1">
+                        <button type="submit" class="ax-btn ax-success">提交解析</button>
+                    </div>
+                </form>
+                <div id="output" class="ax-alert" theme="success">因服务器原因，解析可能较慢，请稍作等待....</div>
+            </section>
+            <div class="ax-break-md"></div>
+            <hr>
+            <div class="ax-break-md"></div>
+            <!--工具简介-->
+            <section>
+                <div class="title">
+                    <h2 class="bl fz16">工具介绍</h2>
+                </div>
+                <article>
+                    <p>蓝奏云直链解析工具是一款在线帮用户快速提取蓝奏云网盘直链的辅助工具。支持有密码的蓝奏云链接，输入链接直接点击解析即可，非常方便，点击复制可以直接下载，下载速度非常快，操作也很简单。
+                    </p>
+                    <h3>
+                        主要特色</h3>
+                    <p>
+                        1、可以帮助用户将蓝奏云的文件分享链接解析成可以直接下载的直链。</p>
+                    <p>
+                        2、支持一键复制直链，解析完成后可以一键将直链复制到粘贴板中。</p>
+                    <p>
+                        3、该工具可以帮助偶尔在蓝奏云上下载文件的用户提供便利，节省时间。</p>
+                </article>
+            </section>
+            <!--工具简介结束-->
+            <script>
+                const form = document.querySelector('#form');
+                const output = document.querySelector('#output');
+
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    output.style.display = 'none';
+                    // 获取输入框的值
+                    const url = document.querySelector('#url').value;
+                    const pwd = document.querySelector('#pwd').value;
+
+                    // 蓝奏云解析API 地址 
+                    let apiUrl = `https://api.hanximeng.com/lanzou/?url=${encodeURIComponent(url)}`;
+                    if (pwd !== '') {
+                        apiUrl += `&pwd=${encodeURIComponent(pwd)}`;
+                    }
+
+                    // 发送请求
+                    fetch(apiUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            // 输出解析结果
+                            const { name, msg, filesize, downUrl } = data;
+                            output.innerHTML = `<p><strong>解析结果：</strong>${msg}</p><p>文件名：${name}</p><p>文件大小：${filesize} 字节</p><p><strong>官方直链地址：</strong></p><pre id="copyTarget">${downUrl}</pre><button id="copyBtn" class="ax-btn ax-primary ax-sm">复制链接</button>  <br><a href="${downUrl}"  class="ax-btn ax-primary ax-sm">下载文件</a>
+   <p>官方直链地址一般几个小时后自动失效！</p>  <p><strong>永久直链：</strong></p><pre id="copyTarget2">${apiUrl}&type=down</pre><button id="copyBtn2" class="ax-btn ax-primary ax-sm">复制链接</button>`;
+                            output.style.display = 'block';
+                            // 复制按钮事件
+                            const copyBtns = document.querySelectorAll('[id^="copyBtn"]');
+                            copyBtns.forEach(copyBtn => {
+                                copyBtn.addEventListener('click', () => {
+                                    const copyTarget = document.querySelector(`#${copyBtn.previousElementSibling.id}`);
+                                    const range = document.createRange();
+                                    range.selectNode(copyTarget);
+                                    const selection = window.getSelection();
+                                    selection.removeAllRanges();
+                                    selection.addRange(range);
+                                    document.execCommand('copy');
+                                    selection.removeAllRanges();
+                                    const copySuccess = document.createElement('div');
+                                    copySuccess.classList.add('copy-success');
+                                    layer.msg('复制成功！');
+                                    copyBtn.parentNode.insertBefore(copySuccess, copyBtn.nextElementSibling);
+                                });
+                            });
+                        })
+                        .catch(error => {
+                            // 输出错误消息
+                            output.innerText = `出错了：${error.message}`;
+                            output.style.display = 'block';
+                        });
+                });
+            </script>
+        </div>
+    </div>
+    <!--蓝奏云解析结束-->
+
+    <!--页面底部版权区域-->
+    <div class="ax-footer">
+        <div class="ax-row ax-split box bg ax-shadow-primary">
+            <div class="ax-col ax-copyright">自用测试<span class="hidde"><a
+                        href="https://yyynnnsss.github.io/zy/lanzou.html" target="_blank"
+                        rel="external nofollow">测试</a></span></div>
+            <div class="ax-operate">
+                <a href=""
+                    class="ax-btn ax-line ax-sm ax-icon ax-round" title= target="_blank"><i
+                        class=""></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
