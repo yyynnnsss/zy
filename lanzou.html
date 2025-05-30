@@ -95,7 +95,7 @@
                     const pwd = document.querySelector('#pwd').value;
 
                     // 蓝奏云解析API 地址 
-                    let apiUrl = `https://api.hanximeng.com/lanzou/?url=${encodeURIComponent(url)}`;
+                    let apiUrl =  https://api.kxzjoker.cn/api/lanzou?url=${encodeURIComponent(url)}`;
                     if (pwd !== '') {
                         apiUrl += `&pwd=${encodeURIComponent(pwd)}`;
                     }
@@ -106,7 +106,7 @@
                         .then(data => {
                             // 输出解析结果
                             const { name, msg, filesize, downUrl } = data;
-                            output.innerHTML = `<p><strong>解析结果：</strong>${msg}</p><p>文件名：${name}</p><p>文件大小：${filesize} 字节</p><p><strong>官方直链地址：</strong></p><pre id="copyTarget">${downUrl}</pre><button id="copyBtn" class="ax-btn ax-primary ax-sm">复制链接</button>  <br><a href="${downUrl}"  class="ax-btn ax-primary ax-sm">下载文件</a>
+                            output。innerHTML = `<p><strong>解析结果：</strong>${msg}</p><p>文件名：${name}</p><p>文件大小：${filesize} 字节</p><p><strong>官方直链地址：</strong></p><pre id="copyTarget">${downUrl}</pre><button id="copyBtn" class="ax-btn ax-primary ax-sm">复制链接</button>  <br><a href="${downUrl}"  class="ax-btn ax-primary ax-sm">下载文件</a>
    <p>官方直链地址一般几个小时后自动失效！</p>  <p><strong>永久直链：</strong></p><pre id="copyTarget2">${apiUrl}&type=down</pre><button id="copyBtn2" class="ax-btn ax-primary ax-sm">复制链接</button>`;
                             output.style.display = 'block';
                             // 复制按钮事件
