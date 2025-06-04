@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>视频解析 - VIP视频免费看</title>
+  <meta name="description" content="视频解析，免费观看各大视频平台VIP内容，支持优酷、爱奇艺、腾讯视频、芒果TV等VIP视频在线解析，无需会员即可享受高清视频服务。">
+  <meta name="keywords" content="视频解析,VIP解析,免费看VIP,优酷解析,爱奇艺解析,腾讯视频解析,芒果TV解析,在线视频解析,会员视频免费看">
+  <meta name="theme-color" content="#4a6bff">
+  
+  <!-- 结构化数据 -->
+
+  
+  <style>
+    /* 基础样式 */
+    :root {
+      --primary-color: #4a6bff;
+      --primary-dark: #3a5bef;
+      --secondary-color: #6c757d;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --success-color: #28a745;
+      --info-color: #17a2b8;
+      --warning-color: #ffc107;
+      --danger-color: #dc3545;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color: var(--dark-color);
+      background-color: #f5f7ff;
+      line-height: 1.6;
+    }
+    
+    /* 顶部Banner */
+    .header-banner {
+      background: linear-gradient(135deg, #4a6bff, #6a4bff);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(74, 107, 255, 0.2);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    
+    .logo-icon {
+      font-size: 2.5rem;
+      margin-right: 15px;
+      background: white;
+      color: var(--primary-color);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo-text {
+      text-align: left;
+    }
+    
+    .logo-text h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    
+    .logo-text p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    /* 主容器 */
+    .main-container {
+      padding: 30px 15px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    /* 视频容器 */
+    .video-container {
+      position: relative;
+      width: 100%;
+      background: #000;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      margin-bottom: 25px;
+      box-shadow: var(--box-shadow);
+    }
+    
+    .video-container iframe {
+      width: 100%;
+      display: block;
+      border: none;
+    }
+    
+    /* 卡片样式 */
+    .card {
+      border: none;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      margin-bottom: 25px;
+      background: white;
+      box-shadow: var(--box-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-body {
+      padding: 25px;
+    }
+    
+    /* 表单样式 */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark-color);
+    }
+    
+    .form-control {
+      border-radius: var(--border-radius);
+      padding: 12px 15px;
+      border: 1px solid #e0e0e0;
+      width: 100%;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background-color: #f8f9fa;
+    }
+    
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 15px;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(74, 107, 255, 0.25);
+      outline: none;
+      background-color: white;
+    }
+    
+    /* 按钮样式 */
+    .btn {
+      border-radius: var(--border-radius);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.8rem 1.75rem;
+      font-size: 1.1rem;
+    }
+    
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+    
+    .btn-lg {
+      padding: 0.9rem 1.75rem;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(74, 107, 255, 0.3);
+    }
+    
+    .btn-outline-primary {
+      background-color: transparent;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .btn-success {
+      background-color: var(--success-color);
+      color: white;
+    }
+    
+    .btn-success:hover {
+      background-color: #218838;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+    }
+    
+    .btn-group-vertical {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .btn-group-vertical .btn {
+      margin-bottom: 12px;
+    }
+    
+    .btn-group-vertical .btn:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* 平台链接 */
+    .platform-links {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .platform-links h5 {
+      margin-bottom: 15px;
+      color: var(--dark-color);
+      font-weight: 600;
+    }
+    
+    .platform-links .btn {
+      margin: 5px;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      border: 1px solid #e0e0e0;
+      background-color: white;
+      color: var(--secondary-color);
+    }
+    
+    .platform-links .btn:hover {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+    
+    /* 使用指南 */
+    .guide-section {
+      margin-bottom: 30px;
+    }
+    
+    .guide-section h5 {
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    ol.guide-steps {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    ol.guide-steps li {
+      margin-bottom: 12px;
+      padding-left: 5px;
+    }
+    
+    /* 搜索框 */
+    .search-box {
+      max-width: 500px;
+      margin: 25px auto 0;
+    }
+    
+    .search-box h6 {
+      color: var(--dark-color);
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .input-group {
+      display: flex;
+    }
+    
+    .input-group input {
+      flex: 1;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    .input-group-append {
+      margin-left: -1px;
+    }
+    
+    .input-group-append .btn {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    
+    /* 提示框 */
+    .alert {
+      border-radius: var(--border-radius);
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+    }
+    
+    .alert-info {
+      background-color: #f0f7ff;
+      border-color: #d0e3ff;
+      color: #31708f;
+    }
+    
+    /* 页脚 */
+    .footer {
+      background-color: white;
+      color: var(--secondary-color);
+      padding: 30px 0;
+      margin-top: 40px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .footer p {
+      margin-bottom: 10px;
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+      .logo {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      
+      .logo-text {
+        text-align: center;
+      }
+      
+      .video-container iframe {
+        height: 250px !important;
+      }
+      
+      .platform-links .btn {
+        min-width: 80px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+      
+      .card-body {
+        padding: 20px;
+      }
+    }
+    
+    @media (min-width: 992px) {
+      .video-container iframe {
+        height: 500px;
+      }
+    }
+    
+    /* 动画效果 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fade {
+      animation: fadeIn 0.6s ease forwards;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 顶部Banner -->
+  <header class="header-banner">
+    <div class="logo">
+      <div >
+        <h1>视频解析</h1>
+        <p>全网VIP视频 · 一键免费观看</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容区 -->
+  <div class="main-container animate-fade">
+    <!-- 解析操作区 -->
+    <div class="card">
+      <div class="card-body">
+        <!-- 视频播放器 -->
+        <div class="video-container">
+          <iframe src="https://geilian.com/inc/ks.html" id="player" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+        </div>
+        
+        <!-- 解析表单 -->
+        <form id="parse-form">
+          <div class="form-group">
+            <label for="jk">选择解析接口</label>
+            <select class="form-control form-control-lg" id="jk">
+              <option value="https://jx.xymp4.cc/?url="  selected>VIP视频解析</option>
+              <option value="https://jx.xmflv.com/?url=">VIP视频解析二</option>
+              <option value="https://jx.aidouer.net/?url=">VIP视频解析三</option>
+              <option value="https://jx.xmflv.cc/?url=">VIP视频解析四</option>
+              <option value="https://z1.im1907.top/?jx=">输入片名自动解析</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="url">视频地址</label>
+            <input type="text" class="form-control form-control-lg" id="url" placeholder="粘贴优酷、爱奇艺、腾讯等视频网址" required>
+          </div>
+          
+          <div class="btn-group-vertical">
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="dihejk()">
+              开始解析
+            </button>
+            <button type="button" class="btn btn-outline-primary btn-lg btn-block" onclick="dihejk2()">
+              全屏解析
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- 快速入口 -->
+    <div class="platform-links">
+      <h5>快速进入视频网站</h5>
+      <div>
+        <a href="https://www.le.com/" class="btn btn-sm" target="_blank">乐视视频</a>
+        <a href="https://www.iqiyi.com/" class="btn btn-sm" target="_blank">爱奇艺</a>
+        <a href="https://www.mgtv.com/" class="btn btn-sm" target="_blank">芒果TV</a>
+        <a href="https://v.qq.com/" class="btn btn-sm" target="_blank">腾讯视频</a>
+        <a href="https://www.youku.com/" class="btn btn-sm" target="_blank">优酷</a>
+        <a href="https://tv.sohu.com/" class="btn btn-sm" target="_blank">搜狐视频</a>
+      </div>
+    </div>
+    
+    <!-- 使用指南 -->
+    <div class="card guide-section">
+      <div class="card-body">
+        <h5>使用指南</h5>
+        <ol class="guide-steps">
+          <li>进入各大视频网站，找到想看的VIP视频</li>
+          <li>复制视频页面地址栏中的网址</li>
+          <li>将网址粘贴到本页面的"视频地址"输入框中</li>
+          <li>点击"开始解析"按钮即可免费观看</li>
+        </ol>
+        
+        <div class="search-box">
+          <h6>直接搜索影片名称</h6>
+          <div class="input-group">
+            <input type="text" class="form-control" id="sos" placeholder="输入片名如：战狼2">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button" onclick="sub()">搜索</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 温馨提示 -->
+    <div class="alert alert-info">
+      <h6>温馨提示</h6>
+      <p>本站提供视频解析服务，所有视频资源均来自互联网，仅供学习交流使用。若解析失败，请尝试更换解析接口。</p>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 视频解析 - 全网VIP视频免费看</p>
+      <p class="small">本站不存储任何视频资源，仅提供解析服务</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 解析功能函数
+    function dihejk() {
+      var diz = document.getElementById("url").value;
+      var jkurl = document.getElementById("jk");
+      var jk = document.getElementById("jk").selectedIndex;
+      var jkv = jkurl.options[jk].value;
+      var cljurl = document.getElementById("player");
+      cljurl.src = jkv + diz;
+    }
+
+    function dihejk2() {
+      var diz = document.getElementById("url").value;
+      var jkurl = document.getElementById("jk");
+      var jk = document.getElementById("jk").selectedIndex;
+      var jkv = jkurl.options[jk].value;
+      window.open(jkv + diz, "_blank");
+    }
+
+    // 搜索功能
+    function sub() {
+      var k = document.getElementById("sos").value.trim();
+      if (!k) {
+        alert('请输入片名关键字');
+      } else {
+        window.open("http://z1.im1907.top/?jx=" + k, '_blank');
+      }
+    }
+
+    // 收藏功能
+    function addFavorite22() {
+      var url = window.location;
+      var title = document.title;
+      var ua = navigator.userAgent.toLowerCase();
+      
+      if (ua.indexOf("360se") > -1) {
+        alert("请按 Ctrl+D 手动收藏");
+      } else if (ua.indexOf("msie 8") > -1) {
+        window.external.AddToFavoritesBar(url, title);
+      } else if (document.all) {
+        try {
+          window.external.addFavorite(url, title);
+        } catch(e) {
+          alert('请按 Ctrl+D 手动收藏');
+        }
+      } else if (window.sidebar) {
+        window.sidebar.addPanel(title, url, "");
+      } else {
+        alert('请按 Ctrl+D 手动收藏');
+      }
+    }
+
+    // 移动端检测
+    if (navigator.userAgent.match(/(iPhone|iPod|Android|ios|nokia|sony|ericsson|mot|samsung|htc|sgh|lg|sharp|sie-|panasonic|ucweb|meizu|blackberry|netfront|symbian|windowsce|palm|operamini|operamobi|lenovo|alcatel|philips|cldc|openwave|nexusone|midp|wap|mobile|UCBrowser)/i)) {
+      console.log('移动端访问');
+      document.querySelector('.video-container iframe').style.height = '300px';
+    } else {
+      console.log('PC端访问');
+      document.querySelector('.video-container iframe').style.height = '500px';
+    }
+  </script>
+</body>
+</html>
