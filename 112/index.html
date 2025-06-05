@@ -26,7 +26,7 @@
         var url = decodeURIComponent(encodeURIComponent(new URLSearchParams(location.search))).replace(new RegExp(/(\S*)url=/),"");
         var isMobiles = navigator.userAgent.match(/iPad|iPhone|Android|Linux|iPod/i)!=null ? 1 : 0;
         if(isMobiles == 0 && window.self == window.top && url == ""||url == "undefined"||url == "null"){
-        XMlayEr.error('<style>.container{display:flex;justify-content:center;align-items:center;height:100vh;}iframe{width:80%;max-width:1100px;height:630px;border: 3px solid #CC6633;}</style><div class="container"><iframe src="jx.html"></iframe></div>');
+        XMlayEr.error('<style>.container{display:flex;justify-content:center;align-items:center;height:100vh;}iframe{width:80%;max-width:1100px;height:630px;border: 3px solid #CC6633;}</style><div class="container"><iframe src="https://jx.xmflv.com/jx.html"></iframe></div>');
         }else if(url == ""||url == "undefined"||url == "null"){
         XMlayEr.error('请填入视频URL地址！<br><br>本接口仅供学习与交流、请勿用于非法用途')
         }else{
