@@ -1,39 +1,68 @@
 
-<!DOCTYPE html>
-<html>
+
+<html lang="zh-cn">
 <head>
-    <title>全网最稳定解析接口</title>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="Content-language" content="zh-CN">
-    <meta name="renderer" content="webkit">
-    <meta name="referrer" content="never"/>
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="shortcut icon" type="image/x-icon" href="./logo.png" media="screen" />
-    <link rel="stylesheet" href="https://nim.nosdn.127.net/MTAyNDkzMg==/bmltYV8zNDc1MjQ0MDAxMV8xNzQwMzg0NDMzNTQ3XzAyNWUzMDE1LTBhN2MtNGFlMC1iOTZkLTczODVkOTQ5ZTYzYQ==">
-    <script src="https://nim.nosdn.127.net/MTY4NDA1NTk=/bmltYV8yNjk4MzIxNjQyMTNfMTc0NTUxNzgwMTk2OF80YTNhM2QyMy1jNWZhLTQ2YmUtOTQxOS1lM2UyNjUyYmZkMWE="></script>
-    <script src="https://nim.nosdn.127.net/MTAyNDkzMg==/bmltYV8zNDc1MjQ0MDAxMV8xNzA2MDcyNDQxMjQ2X2RlMDJmYTU3LWE3ZGYtNDEzYS1iNDM5LTc2YTVmYjAzMzMwZA=="></script>
-    <script src="https://nim.nosdn.127.net/MTAyNDkzMg==/bmltYV8zNDc1MjQ0MDAxMV8xNzA2MDcyMzY1NDUyXzRkZjlmZGExLWEzODQtNGFhMy1hNTQ4LTgwZmYyN2I1NzFjMQ=="></script>
-    <script src="https://nim.nosdn.127.net/MTY2Nzg1Nzg=/bmltYV8zMjA1MTUyOTczNjFfMTc1MzMyNTgxMzk1M185Y2Y2NTcyYy1hOWNhLTQwYTktYTNkNy0xYjU1OWU3YjU5NTk="></script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <title>VIP视频在线解析</title>
+  <meta name="keywords" content="优酷VIP解析,爱奇艺VIP解析,腾讯VIP解析,乐视VIP解析,芒果VIP解析,视频解析,全能VIP视频解析,视频在线解析" />
+  <meta name="description" content="本站为广大网友提供优酷VIP解析，爱奇艺VIP解析，腾讯VIP解析，乐视VIP解析，芒果VIP解析等解析服务，让你省去购买视频VIP费用，欢迎大家收藏本站，并将它介绍给您的朋友！" />
+  <link rel="shortcut icon" href="./logo.png">
+  <link rel="stylesheet" 输入="text/css" href="https://nim.nosdn.127.net/MTY4NDA1NTk%3D%2FbmltYV8yNjk4MzIxNjQyMTNfMTc0NTk0NDU1Mjc1OF83Yzk5NzEwMS04YzdjLTQzZTMtYjM0OS0yMWY3YjFlMThhNGQ%3D">
+  <style>
+  	。wrapper{padding:0 1rem;}
+  </style>
 </head>
-<body>
-<div id="loading" align="center"><div class="mov"></div></div>
-<div id="player" class="w-h"></div>
-<script type="text/javascript">
-        var url = decodeURIComponent(encodeURIComponent(new URLSearchParams(location.search))).replace(new RegExp(/(\S*)url=/),"");
-        var isMobiles = navigator.userAgent.match(/iPad|iPhone|Android|Linux|iPod/i)!=null ? 1 : 0;
-        if(isMobiles == 0 && window.self == window.top && url == ""||url == "undefined"||url == "null"){
-        XMlayEr.error('<style>.container{display:flex;justify-content:center;align-items:center;height:100vh;}iframe{width:80%;max-width:1100px;height:630px;border: 3px solid #CC6633;}</style><div class="container"><iframe src="https://jx.xmflv.com/jx.html"></iframe></div>');
-        }else if(url == ""||url == "undefined"||url == "null"){
-        XMlayEr.error('请填入视频URL地址！<br><br>本接口仅供学习与交流、请勿用于非法用途')
-        }else{
-        XMlayEr.XMlayEr();    
+<body >
+<button class="aim-menu"><span class="aim-icon fa fa-bars"></span></button>
+
+  <div class="wrapper">
+<div class="container clear">
+	<div class="cnt-t2 clear">
+	<br>    
+    <iframe allowfullscreen="true" allowtransparency="true" id="player" frameborder="0" src="ff.html"></iframe>
+	</div>
+	<br>
+	<div class="cnt-3 clear">
+		 <form method="get" >
+      <div class="cnt-3-1">
+
+<select class="form-control input-lg" id="jk">  
+<option value="https://jx.hls.one/?url=" selected="">备用②→</option>
+<option value="https://jx.xmflv.cc/?url=" selected="">备用①→</option>
+<option value="/?url=" selected="">请粘贴视频地址→</option>
+</select>
+    </div>
+		<div class="cnt-3-2">
+<input class="form-control input-lg" type="search" placeholder="请输入播放地址" value="https://www.iqiyi.com/v_28b3s5tlqlw.html" id="url" autocomplete="off"  onkeypress="if(event.keyCode==13){getkey();}">
+		</div>
+    <div class="cnt-3-3">
+			<button id="bf" type="button" class="btn" onclick="dihejk()" onkeypress="getkey();">播放</button>
+		</div>
+		</form>
+	</div>	
+</div>
+
+
+
+</div>
+    <script type="text/javascript">
+    var	menubtn = document.getElementsByClassName('aim-menu')[0];
+var menu = document.getElementsByClassName('aim-topbar-nav')[0];
+menubtn.onclick = function (){var style = menu.style;style.display = style.display == "block" ? "none" : "block";}
+    eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('b a(){0 6=1.2("9").4;0 5=1.2("3");0 3=1.2("3").c;0 8=5.e[3].4;0 7=1.2("f");7.d=8+6}',16,16,'var|document|getElementById|jk|value|jkurl|diz|cljurl|jkv|url|dihejk|function|selectedIndex|src|options|player'.split('|'),0,{}))
+   function getkey(button){
+    if (event.keyCode == 13)
+        {       
+        event.returnValue = false;
+         document.getElementById('bf').click();
         }
-        let  box = $("#player");
-                function cric(url, sp) {
+};
+        
+    </script>
+</body>
+</html>
+
                 var _iframe = document.createElement("iframe");
                 _iframe.src = url;
                 _iframe.name = sp;
