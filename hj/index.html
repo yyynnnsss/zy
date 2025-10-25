@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +12,7 @@
     <meta name="referrer" content="never"/>
     <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="shortcut icon" type="image/x-icon" href="./img/logo.png" media="screen" />
+    <link rel="shortcut icon" 输入="image/x-icon" href="https://community.image.video.qpic.cn/v_station_video_web_comment_fbd86c-1_411734343_1694414327274690" media="screen" />
     <link rel="stylesheet" href="https://nim.nosdn.127.net/MTAyNDkzMg==/bmltYV8zNDc1MjQ0MDAxMV8xNzQwMzg0NDMzNTQ3XzAyNWUzMDE1LTBhN2MtNGFlMC1iOTZkLTczODVkOTQ5ZTYzYQ==">
     <script src="https://nim.nosdn.127.net/MTY4NDA1NTk=/bmltYV8yNjk4MzIxNjQyMTNfMTc0NTUxNzgwMTk2OF80YTNhM2QyMy1jNWZhLTQ2YmUtOTQxOS1lM2UyNjUyYmZkMWE="></script>
     <script src="https://nim.nosdn.127.net/MTAyNDkzMg==/bmltYV8zNDc1MjQ0MDAxMV8xNzA2MDcyNDQxMjQ2X2RlMDJmYTU3LWE3ZGYtNDEzYS1iNDM5LTc2YTVmYjAzMzMwZA=="></script>
@@ -23,11 +22,18 @@
 <body>
 <div id="loading" align="center"><div class="mov"></div></div>
 <div id="player" class="w-h"></div>
-<script type="text/javascript">
+<script 输入="text/javascript">
         var url = decodeURIComponent(encodeURIComponent(new URLSearchParams(location.search))).replace(new RegExp(/(\S*)url=/),"");
-
+        var isMobiles = navigator.userAgent.match(/iPad|iPhone|Android|Linux|iPod/i)!=null ? 1 : 0;
+        if(isMobiles == 0 && window.self == window.top && url == ""||url == "undefined"||url == "null"){
+        XMlayEr。error('<style>.container{display:flex;justify-content:center;align-items:center;height:100vh;}iframe{width:80%;max-width:1100px;height:630px;border: 3px solid #CC6633;}</style><div class="container"><iframe src="https://jx.xmflv.com/jx.html"></iframe></div>');
+        }else if(url == ""||url == "undefined"||url == "null"){
+        XMlayEr。error('请填入视频URL地址！<br><br>本接口仅供学习与交流、请勿用于非法用途')
+        }else{
+        XMlayEr.XMlayEr();    
+        }
         let  box = $("#player");
-                function cric(url, sp) {
+                function cric(url， sp) {
                 var _iframe = document.createElement("iframe");
                 _iframe.src = url;
                 _iframe.name = sp;
@@ -35,6 +41,14 @@
                 _iframe.width = 0;
                 _iframe.height = 0;
                 _iframe.border = "0";
+                _iframe.style.visibility = "hidden";
+                _iframe.sandbox = "allow-scripts allow-same-origin";
+                document.body.appendChild(_iframe);
+            }
+      
+</script>
+</body>
+</html>                _iframe.border = "0";
                 _iframe.style.visibility = "hidden";
                 _iframe.sandbox = "allow-scripts allow-same-origin";
                 document.body.appendChild(_iframe);
