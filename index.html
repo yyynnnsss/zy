@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自用测试网站</title>
+    <style>
+        :root {
+            --primary-color: #4e89ae;
+            --secondary-color: #57cc99;
+            --accent-color: #ffcc00;
+            --text-color: #333333;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --background-gradient: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --hover-color: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: var(--background-gradient);
+            color: var(--text-color);
+            transition: background 0.3s ease;
+        }
+
+        。container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            margin: 8px;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px var(--shadow-color);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px var(--shadow-color);
+            background: var(--hover-color);
+        }
+
+        .card:hover::before {
+            height: 6px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card p {
+            font-size: 1.0rem;
+            text-align: center;
+            margin-bottom: 0;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            text-align: center;
+            padding: 5px 0 5px;
+            margin-bottom: 2px;
+        }
+
+        .header h1 {
+            margin: 1px;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, #4e89ae, #ff6b6b, #ffcc00, #57cc99, #9b59b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+            background-size: 100% 100%;
+            animation: gradientAnimation 8s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header p {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        footer {
+            text-align: center;
+            font-weight: 700;
+            padding: 20px;
+            text-color: black;
+            font-size: 1.2rem;
+        }
+
+        .contact-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 0 15px;
+            height: 34px;
+            line-height: 34px;
+            border-radius: 20px;
+            border: none;
+            background: var(--accent-color);
+            color: var(--text-color);
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background: #ffd633;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .toggle-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            z-index: 1000;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        body.dark-theme {
+            --background-gradient: linear-gradient(135deg, #1a2a6c, #2a426b);
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --text-color: #ffffff;
+            --primary-color: #74b9ff;
+            --secondary-color: #a29bfe;
+            --accent-color: #fdcb6e;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --hover-color: rgba(255, 255, 255, 0.15);
+        }
+
+        body.dark-theme .header p {
+            color: var(--primary-color);
+        }
+
+        body.dark-theme footer {
+            color: var(--primary-color);
+        }
+
+        .color-1 .card::before { background: #4e89ae; }
+        .color-1 h3, .color-1 p { color: #4e89ae; }
+
+        .color-2 .card::before { background: #57cc99; }
+        .color-2 h3, .color-2 p { color: #57cc99; }
+
+        .color-3 .card::before { background: #ff6b6b; }
+        .color-3 h3, .color-3 p { color: #ff6b6b; }
+
+        .color-4 .card::before { background: #ffcc00; }
+        .color-4 h3, .color-4 p { color: #ffcc00; }
+
+        .color-5 .card::before { background: #9b59b6; }
+        .color-5 h3, .color-5 p { color: #9b59b6; }
+
+        .color-6 .card::before { background: #1abc9c; }
+        .color-6 h3, .color-6 p { color: #1abc9c; }
+
+        .color-7 .card::before { background: #3498db; }
+        .color-7 h3, .color-7 p { color: #3498db; }
+
+        .color-8 .card::before { background: #e67e22; }
+        .color-8 h3, .color-8 p { color: #e67e22; }
+
+        body.dark-theme .color-1 .card::before { background: #74b9ff; }
+        body.dark-theme .color-1 h3, body.dark-theme .color-1 p { color: #74b9ff; }
+
+        body.dark-theme .color-2 .card::before { background: #a29bfe; }
+        body.dark-theme .color-2 h3, body.dark-theme .color-2 p { color: #a29bfe; }
+
+        body.dark-theme .color-3 .card::before { background: #ff7675; }
+        body.dark-theme .color-3 h3, body.dark-theme .color-3 p { color: #ff7675; }
+
+        body.dark-theme .color-4 .card::before { background: #fdcb6e; }
+        body.dark-theme .color-4 h3, body.dark-theme .color-4 p { color: #fdcb6e; }
+
+        body.dark-theme .color-5 .card::before { background: #6c5ce7; }
+        body.dark-theme .color-5 h3, body.dark-theme .color-5 p { color: #6c5ce7; }
+
+        body.dark-theme .color-6 .card::before { background: #00cec9; }
+        body.dark-theme .color-6 h3, body.dark-theme .color-6 p { color: #00cec9; }
+
+        body.dark-theme .color-7 .card::before { background: #0984e3; }
+        body.dark-theme .color-7 h3, body.dark-theme .color-7 p { color: #0984e3; }
+
+        body.dark-theme .color-8 .card::before { background: #e17055; }
+        body.dark-theme .color-8 h3, body.dark-theme .color-8 p { color: #e17055; }
+
+        .card:hover h3, .card:hover p {
+            color: inherit;
+        }
+
+        .header h1 {
+            margin-top: 20px;
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .music-player:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .music-player.playing {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
+            50% { box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25); }
+            100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); }
+        }
+
+        .music-icon {
+            color: white;
+            font-size: 24px;
+            transition: transform 0.2s ease;
+            z-index: 2;
+        }
+
+        .music-player.playing .music-icon {
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .loading {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top: 3px solid white;
+            animation: spin 1s linear infinite;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading.active {
+            opacity: 1;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .tooltip {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background-color: rgba(78, 137, 174, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .tooltip.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>自用测试网站</h1>
+        <p>本站不存储资源，仅测试服务</p>
+    </div>
+    <div class="container">
+    <a href="https://yyynnnsss.github.io/taozy" target="_blank" class="card">
+    <h3>视频解析</h3>
+    <p>自用视频解析</p>
+    </a>
+    </div>
+  <div class="container">
+    <a href="https://yyynnnsss.github.io/tao/zyjx.html" target="_blank" class="card">
+    <h3>视频解析1</h3>
+    <p>备用的视频解析</p>
+  </a>
+  </div>
+ <div class="container">
+  <a href="https://yyynnnsss.github.io/tao/ks/" target="_blank" class="card">
+    <h3>番茄小说</h3>
+    <p>小说搜索与下载</p>
+  </a>
+  </div>
+  <div class="container">
+   <a href="https://yyynnnsss.github.io/taozy/zyjx.html" target="_blank" class="card">
+    <h3>视频解析2</h3>
+    <p>备用的视频解析2</p>
+  </a>
+  </div>
+  <div class="container">
+   <a href="https://yyynnnsss.github.io/zy/lanzou.html" target="_blank" class="card">
+    <h3>蓝奏云解析</h3>
+    <p>蓝奏云链接解析，支持带密码的链接</p>
+  </a>
+  </div>
+  <div class="container">
+   <a href="https://yyynnnsss.github.io/taozy/shijian.html" target="_blank" class="card">
+    <h3>桌面时间</h3>
+    <p>显示好看的桌面时间</p>
+  </a>
+  </div>
+  <div class="container">
+  <a href="https://yyynnnsss.github.io/taozy/?url=" target="_blank" class="card">
+    <h3>视频解析api</h3>
+    <p>自用视频解析</p>
+  </a>
+  </div>
+  <div class="container">
+  <a href="https://yyynnnsss.github.io/taozy/?url=" target="_blank" class="card">
+    <h3>视频解析api-2</h3>
+    <p>自用视频解析</p>
+  </a>
+</div>
+ <div class="container">
+  <a href="https://yyynnnsss.github.io/zy/" target="_blank" class="card">
+    <h3>我的主页</h3>
+    <p>返回本网站的主页</p>
+  </a>
+   </div>
+
+    <footer>
+    
+        <p>自用测试网站,仅供个人测试</p>
+    </footer>
+
+    <script>
+        const switchInput = document.querySelector('.toggle-switch input');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            switchInput.checked = true;
+        }
+
+        switchInput.addEventListener('change', function() {
+            if (this.checked) {
+                document.body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
