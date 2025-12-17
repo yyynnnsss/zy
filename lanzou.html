@@ -53,7 +53,7 @@
                     <div class="ax-row ax-input-group">
                         <span class="ax-prefix">密码：</span>
                         <div class="ax-flex-block">
-                            <input type="text" id="pwd" placeholder="请输入密码（无密码则留空）">
+                            <input type="text" id="p" placeholder="请输入密码（无密码则留空）">
                         </div>
                     </div>
                     <div class="tcenter p1">
@@ -97,7 +97,7 @@
 
                     // 蓝奏云解析API 地址 
                     let apiUrl = `http://flexhook.eu.org/lzy/?url=${encodeURIComponent(url)}`;
-                    if (pwd !== '') {
+                    if (p !== '') {
                         apiUrl += `&p=${encodeURIComponent(pwd)}`;
                     }
 
