@@ -96,9 +96,9 @@
                     const pwd = document.querySelector('#pwd').value;
 
                     // 蓝奏云解析API 地址 
-                    let apiUrl = `https://api.kxzjoker.cn/api/lanzou?url=${encodeURIComponent(url)}`;
+                    let apiUrl = `http://flexhook.eu.org/lzy/?url=${encodeURIComponent(url)}`;
                     if (pwd !== '') {
-                        apiUrl += `&pwd=${encodeURIComponent(pwd)}`;
+                        apiUrl += `&p=${encodeURIComponent(pwd)}`;
                     }
 
                     // 发送请求
